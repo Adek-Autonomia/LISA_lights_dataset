@@ -368,7 +368,22 @@ def shiftright(img, px):
 
 
 
+def color_classify(img):
+    """
+    Classifies traffic light image as either red or green.
 
+    Parameters
+    ----------
+    img - image to classify
+
+    Returns
+    -------
+    -1 if image is classified as red and 1 if classified as green.
+    """
+    img = _force_RGB_array(img)
+    img = img.mean(axis=0).mean(axis=0)[:-1]
+    color = -1 if np.argmax(img)==0 else 1
+    return color
 
 
 
